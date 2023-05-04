@@ -22,3 +22,19 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\TransferService:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    Symfony\Component\Serializer\Normalizer\ObjectNormalizer:
+        tags: [serializer.normalizer]
+
+    Symfony\Component\Serializer\Normalizer\ArrayDenormalizer:
+        tags: [serializer.normalizer]
+
+    Symfony\Component\Serializer\Normalizer\DateTimeNormalizer:
+        tags: [serializer.normalizer]
+
+    Symfony\Component\Serializer\Encoder\JsonEncoder:
+        tags: [serializer.encoder]
