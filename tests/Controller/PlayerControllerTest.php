@@ -6,15 +6,27 @@ use App\Entity\Team;
 use App\Entity\Transfer;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
+use App\Repository\TeamRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
 
 class PlayerControllerTest extends WebTestCase
 {
+    private $client;
+    private $entityManager;
+
     public function testGetTeamPlayers(): void
     {
         $client = static::createClient();
-        $teamId = 1;
+        $container = static::getContainer();
+        /** @var ManagerRegistry $doctrine */
+        $doctrine = $container->get('doctrine');
+        $entityManager = $doctrine->getManager();
 
-        $client->request('GET', '/api/v1/teams/' . $teamId . '/players');
+        $teamRepository = $entityManager->getRepository(Team::class);
+        $team = $teamRepository->findOneBy([]);
+
+        $client->request('GET', '/api/v1/teams/' . $team->getId() . '/players');
         $response = $client->getResponse();
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
