@@ -13,6 +13,7 @@
 docker-compose up -d --build
 
 3 - Setup Backend
+
 docker exec -it football-team-management-app composer install
 
 docker exec -it football-team-management-app php bin/console doctrine:database:create
@@ -23,6 +24,7 @@ docker exec -it football-team-management-app php bin/console doctrine:fixtures:l
 
 
 5 - Setup test
+
 docker exec -it football-team-management-app php bin/console doctrine:database:create --env=test
 
 docker exec -it football-team-management-app php bin/console doctrine:migrations:migrate -n --env=test
