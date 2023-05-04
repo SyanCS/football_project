@@ -1,0 +1,13 @@
+<phpunit>
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <server name="APP_ENV" value="test" force="true" />
+        <server name="SHELL_VERBOSITY" value="-1" />
+        <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
+        <server name="SYMFONY_PHPUNIT_VERSION" value="8.5" />
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+        <env name="FRONTEND_URL" value="http://localhost:8081"/>
+        <env name="DATABASE_URL" value="mysql://db_user:db_password@database:3306/football_team_management?serverVersion=8.0" />
+
+    </php>
+</phpunit>
